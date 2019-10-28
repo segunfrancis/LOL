@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_any">
+
+    <fragment
+        android:id="@+id/nav_any"
+        android:name="com.android.segunfrancis.lol.ui.any.AnyFragment"
+        android:label="@string/menu_any"
+        tools:layout="@layout/fragment_any" />
+
+    <fragment
+        android:id="@+id/nav_programming"
+        android:name="com.android.segunfrancis.lol.ui.programming.ProgrammingFragment"
+        android:label="@string/menu_programming"
+        tools:layout="@layout/fragment_programming" />
+
+    <fragment
+        android:id="@+id/nav_dark"
+        android:name="com.android.segunfrancis.lol.ui.dark.DarkFragment"
+        android:label="@string/menu_dark"
+        tools:layout="@layout/fragment_dark" />
+
+    <fragment
+        android:id="@+id/nav_miscellaneous"
+        android:name="com.android.segunfrancis.lol.ui.miscellaneous.MiscellaneousFragment"
+        android:label="@string/menu_miscellaneous"
+        tools:layout="@layout/fragment_miscellaneous" />
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.android.segunfrancis.lol.ui.share.ShareFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_share" />
+
+    <fragment
+        android:id="@+id/nav_send"
+        android:name="com.android.segunfrancis.lol.ui.about.AboutFragment"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_about" />
+</navigation>
