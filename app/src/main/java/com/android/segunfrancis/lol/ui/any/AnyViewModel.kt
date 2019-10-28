@@ -14,7 +14,7 @@ class AnyViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
 
-        /*val client = Client
+        val client = Client
         val apiService = client.getClient()?.create(Service::class.java)
         val call: Call<JokeResponse> = apiService!!.getAnyJoke()
         call.enqueue(object : Callback<JokeResponse?> {
@@ -32,7 +32,7 @@ class AnyViewModel : ViewModel() {
             override fun onFailure(call: Call<JokeResponse?>, t: Throwable) {
                 value = t.localizedMessage
             }
-        })*/
+        })
     }
     val text: LiveData<String> = _text
 }
