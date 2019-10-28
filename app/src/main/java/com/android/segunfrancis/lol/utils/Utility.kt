@@ -16,6 +16,8 @@ import retrofit2.Response
 class Utility {
     companion object {
 
+        const val INSTANCE_STATE_KEY = "joke"
+
         fun loadAnyJoke(textView: TextView) {
             val client = Client
             val apiService = client.getClient()?.create(Service::class.java)

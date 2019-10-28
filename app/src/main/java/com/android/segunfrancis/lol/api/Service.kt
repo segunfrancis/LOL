@@ -1,6 +1,5 @@
 package com.android.segunfrancis.lol.api
 
-import androidx.lifecycle.MutableLiveData
 import com.android.segunfrancis.lol.data.JokeResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -10,11 +9,11 @@ interface Service {
     fun getAnyJoke(): Call<JokeResponse>
 
     @GET(value = "programming")
-    fun getProgrammingJoke(): Call<MutableLiveData<JokeResponse>>
+    fun getProgrammingJoke(): Call<JokeResponse>
 
     @GET(value = "dark")
-    fun getDarkJoke(): Call<MutableLiveData<JokeResponse>>
+    fun getDarkJoke(): Call<JokeResponse>
 
     @GET(value = "miscellaneous")
-    fun getMiscellaneousJoke(): Call<MutableLiveData<JokeResponse>>
+    fun getMiscellaneousJoke(): Call<JokeResponse>
 }

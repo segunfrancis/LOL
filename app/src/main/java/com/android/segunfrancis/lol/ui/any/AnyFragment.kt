@@ -1,31 +1,27 @@
 package com.android.segunfrancis.lol.ui.any
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.android.segunfrancis.lol.R
-import com.android.segunfrancis.lol.api.Client
-import com.android.segunfrancis.lol.api.Service
-import com.android.segunfrancis.lol.data.JokeResponse
+import com.android.segunfrancis.lol.utils.Utility.Companion.INSTANCE_STATE_KEY
 import com.android.segunfrancis.lol.utils.Utility.Companion.displaySnackBar
 import com.android.segunfrancis.lol.utils.Utility.Companion.loadAnyJoke
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 const val TAG = "AnyFragment"
 class AnyFragment : Fragment() {
 
     private lateinit var anyViewModel: AnyViewModel
     private lateinit var textView: TextView
-    private lateinit var shuffleImage: ImageView
+    private lateinit var shuffleImage: ExtendedFloatingActionButton
+    private lateinit var shareFab: FloatingActionButton
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,12 +33,33 @@ class AnyFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_any, container, false)
         textView = root.findViewById(R.id.text_home)
         shuffleImage = root.findViewById(R.id.imageButton)
-        anyViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
-        shuffleImage.setOnClickListener {
+        shareFab = root.findViewById(R.id.fab)
+        if (savedInstanceState != null) {
+            textView.text = savedInstanceState.getString(INSTANCE_STATE_KEY)
+        } else {
             loadAnyJoke(textView)
+/*        anyViewModel.text.observe(this, Observer {
+            textView.text = it
+        })*/
+            shareFab.setOnClickListener {
+                if (textView.text.isNotBlank()) {
+                    val shareIntent = Intent(Intent.ACTION_SEND)
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, "${textView.text} \n #LOL")
+                    shareIntent.type = "text/plain"
+                    startActivity(shareIntent)
+                } else {
+                    displaySnackBar(textView, textView, "Cannot share empty item")
+                }
+            }
+            shuffleImage.setOnClickListener {
+                loadAnyJoke(textView)
+            }
         }
         return root
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString(INSTANCE_STATE_KEY, textView.text.toString())
+        super.onSaveInstanceState(outState)
     }
 }
