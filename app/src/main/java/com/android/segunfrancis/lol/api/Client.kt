@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class Client {
     companion object {
-        const val BASE_URL = "https://sv443.net/jokeapi/category/"
+        private const val BASE_URL = "https://sv443.net/jokeapi/category/"
         var retrofit: Retrofit? = null
 
         fun getClient(): Retrofit? {

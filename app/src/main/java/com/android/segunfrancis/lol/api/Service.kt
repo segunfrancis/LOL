@@ -1,19 +1,20 @@
 package com.android.segunfrancis.lol.api
 
+import androidx.lifecycle.MutableLiveData
 import com.android.segunfrancis.lol.data.JokeResponse
 import retrofit2.Call
 import retrofit2.http.GET
 
 interface Service {
     @GET(value = "any")
-    suspend fun getAnyJoke(): Call<JokeResponse>
+    fun getAnyJoke(): Call<JokeResponse>
 
     @GET(value = "programming")
-    suspend fun getProgrammingJoke(): Call<JokeResponse>
+    fun getProgrammingJoke(): Call<MutableLiveData<JokeResponse>>
 
     @GET(value = "dark")
-    suspend fun getDarkJoke(): Call<JokeResponse>
+    fun getDarkJoke(): Call<MutableLiveData<JokeResponse>>
 
     @GET(value = "miscellaneous")
-    suspend fun getMiscellaneousJoke(): Call<JokeResponse>
+    fun getMiscellaneousJoke(): Call<MutableLiveData<JokeResponse>>
 }
