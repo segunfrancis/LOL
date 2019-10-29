@@ -3,6 +3,7 @@ package com.android.segunfrancis.lol.utils
 import android.graphics.Color
 import android.util.Log
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
 import com.android.segunfrancis.lol.api.Client
 import com.android.segunfrancis.lol.api.Service
@@ -44,7 +45,7 @@ class Utility {
         }
 
         /************************ ANY JOKE FROM ALTERNATE URL ***********************/
-        fun loadAlternateJoke(textView: TextView) {
+        fun loadAlternateJoke(textView: TextView, progressBar: ProgressBar) {
             val client = Client
             val apiService = client.getClient()?.create(Service::class.java)
             val call: Call<AlternateJokeResponse> = apiService!!.getAlternateJoke("https://official-joke-api.appspot.com/random_joke")
@@ -56,17 +57,19 @@ class Utility {
                     val setup = response.body()?.setup
                     val punchline = response.body()?.punchline
                     textView.text = setup.plus("\n").plus(punchline)
+                    progressBar.visibility = View.GONE
                 }
 
                 override fun onFailure(call: Call<AlternateJokeResponse?>, t: Throwable) {
                     displaySnackBar(textView, textView, "Network Failure")
                     Log.d(TAG, t.localizedMessage)
+                    progressBar.visibility = View.GONE
                 }
             })
         }
 
         /************************** PROGRAMMING JOKES *******************************/
-        fun loadProgrammingJoke(textView: TextView) {
+        fun loadProgrammingJoke(textView: TextView, progressBar: ProgressBar) {
             val client = Client
             val apiService = client.getClient()?.create(Service::class.java)
             val call: Call<JokeResponse> = apiService!!.getProgrammingJoke()
@@ -80,17 +83,19 @@ class Utility {
                     val setup = result?.setup
                     val delivery = result?.delivery
                     textView.text = joke.plus(setup).plus("\n").plus(delivery)
+                    progressBar.visibility = View.GONE
                 }
 
                 override fun onFailure(call: Call<JokeResponse?>, t: Throwable) {
                     displaySnackBar(textView, textView, "Network Failure")
                     Log.d(TAG, t.localizedMessage)
+                    progressBar.visibility = View.GONE
                 }
             })
         }
 
         /************************** DARK JOKES ********************************/
-        fun loadDarkJoke(textView: TextView) {
+        fun loadDarkJoke(textView: TextView, progressBar: ProgressBar) {
             val client = Client
             val apiService = client.getClient()?.create(Service::class.java)
             val call: Call<JokeResponse> = apiService!!.getDarkJoke()
@@ -104,17 +109,19 @@ class Utility {
                     val setup = result?.setup
                     val delivery = result?.delivery
                     textView.text = joke.plus(setup).plus("\n").plus(delivery)
+                    progressBar.visibility = View.GONE
                 }
 
                 override fun onFailure(call: Call<JokeResponse?>, t: Throwable) {
                     displaySnackBar(textView, textView, "Network Failure")
                     Log.d(TAG, t.localizedMessage)
+                    progressBar.visibility = View.GONE
                 }
             })
         }
 
         /************************** MISCELLANEOUS JOKES ********************************/
-        fun loadMiscellaneousJoke(textView: TextView) {
+        fun loadMiscellaneousJoke(textView: TextView, progressBar: ProgressBar) {
             val client = Client
             val apiService = client.getClient()?.create(Service::class.java)
             val call: Call<JokeResponse> = apiService!!.getMiscellaneousJoke()
@@ -128,11 +135,13 @@ class Utility {
                     val setup = result?.setup
                     val delivery = result?.delivery
                     textView.text = joke.plus(setup).plus("\n").plus(delivery)
+                    progressBar.visibility = View.GONE
                 }
 
                 override fun onFailure(call: Call<JokeResponse?>, t: Throwable) {
                     displaySnackBar(textView, textView, "Network Failure")
                     Log.d(TAG, t.localizedMessage)
+                    progressBar.visibility = View.GONE
                 }
             })
         }

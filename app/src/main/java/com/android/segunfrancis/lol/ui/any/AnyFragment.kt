@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -14,13 +15,16 @@ import com.android.segunfrancis.lol.utils.Utility.Companion.loadAlternateJoke
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_any.*
 
 const val TAG = "AnyFragment"
+
 class AnyFragment : Fragment() {
 
     private lateinit var anyViewModel: AnyViewModel
     private lateinit var shuffleImage: ExtendedFloatingActionButton
     private lateinit var shareFab: FloatingActionButton
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,12 +35,13 @@ class AnyFragment : Fragment() {
             ViewModelProviders.of(this).get(AnyViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_any, container, false)
         textView = root.findViewById(R.id.text_home)
+        progressBar = root.findViewById(R.id.progressBar)
         shuffleImage = root.findViewById(R.id.imageButton)
         shareFab = root.findViewById(R.id.fab)
         if (savedInstanceState != null) {
             textView.text = savedInstanceState.getString(INSTANCE_STATE_KEY)
         } else {
-            loadAlternateJoke(textView)
+            loadAlternateJoke(textView, progressBar)
 /*        anyViewModel.text.observe(this, Observer {
             textView.text = it
         })*/
@@ -47,10 +52,11 @@ class AnyFragment : Fragment() {
                     shareIntent.type = "text/plain"
                     startActivity(shareIntent)
                 } else {
-                    Snackbar.make(textView, "Cannot share empty item", Snackbar.LENGTH_LONG).show()                }
+                    Snackbar.make(textView, "Cannot share empty item", Snackbar.LENGTH_LONG).show()
+                }
             }
             shuffleImage.setOnClickListener {
-                loadAlternateJoke(textView)
+                loadAlternateJoke(textView, progressBar)
             }
         }
         return root
