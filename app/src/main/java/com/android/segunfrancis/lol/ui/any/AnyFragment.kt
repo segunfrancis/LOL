@@ -10,16 +10,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.android.segunfrancis.lol.R
 import com.android.segunfrancis.lol.utils.Utility.Companion.INSTANCE_STATE_KEY
-import com.android.segunfrancis.lol.utils.Utility.Companion.displaySnackBar
-import com.android.segunfrancis.lol.utils.Utility.Companion.loadAnyJoke
+import com.android.segunfrancis.lol.utils.Utility.Companion.loadAlternateJoke
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 
 const val TAG = "AnyFragment"
 class AnyFragment : Fragment() {
 
     private lateinit var anyViewModel: AnyViewModel
-    private lateinit var textView: TextView
     private lateinit var shuffleImage: ExtendedFloatingActionButton
     private lateinit var shareFab: FloatingActionButton
 
@@ -37,7 +36,7 @@ class AnyFragment : Fragment() {
         if (savedInstanceState != null) {
             textView.text = savedInstanceState.getString(INSTANCE_STATE_KEY)
         } else {
-            loadAnyJoke(textView)
+            loadAlternateJoke(textView)
 /*        anyViewModel.text.observe(this, Observer {
             textView.text = it
         })*/
@@ -48,11 +47,10 @@ class AnyFragment : Fragment() {
                     shareIntent.type = "text/plain"
                     startActivity(shareIntent)
                 } else {
-                    displaySnackBar(textView, textView, "Cannot share empty item")
-                }
+                    Snackbar.make(textView, "Cannot share empty item", Snackbar.LENGTH_LONG).show()                }
             }
             shuffleImage.setOnClickListener {
-                loadAnyJoke(textView)
+                loadAlternateJoke(textView)
             }
         }
         return root
@@ -61,5 +59,9 @@ class AnyFragment : Fragment() {
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString(INSTANCE_STATE_KEY, textView.text.toString())
         super.onSaveInstanceState(outState)
+    }
+
+    companion object {
+        private lateinit var textView: TextView
     }
 }

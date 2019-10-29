@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.TextView
 import com.android.segunfrancis.lol.api.Client
 import com.android.segunfrancis.lol.api.Service
+import com.android.segunfrancis.lol.data.AlternateJokeResponse
 import com.android.segunfrancis.lol.data.JokeResponse
 import com.android.segunfrancis.lol.ui.any.TAG
 import com.google.android.material.snackbar.Snackbar
@@ -18,6 +19,7 @@ class Utility {
 
         const val INSTANCE_STATE_KEY = "joke"
 
+        /************************** ANY JOKE ********************************/
         fun loadAnyJoke(textView: TextView) {
             val client = Client
             val apiService = client.getClient()?.create(Service::class.java)
@@ -35,7 +37,101 @@ class Utility {
                 }
 
                 override fun onFailure(call: Call<JokeResponse?>, t: Throwable) {
-                    displaySnackBar(textView, textView,"Network Failure")
+                    displaySnackBar(textView, textView, "Network Failure")
+                    Log.d(TAG, t.localizedMessage)
+                }
+            })
+        }
+
+        /************************ ANY JOKE FROM ALTERNATE URL ***********************/
+        fun loadAlternateJoke(textView: TextView) {
+            val client = Client
+            val apiService = client.getClient()?.create(Service::class.java)
+            val call: Call<AlternateJokeResponse> = apiService!!.getAlternateJoke("https://official-joke-api.appspot.com/random_joke")
+            call.enqueue(object : Callback<AlternateJokeResponse?> {
+                override fun onResponse(
+                    call: Call<AlternateJokeResponse?>,
+                    response: Response<AlternateJokeResponse?>
+                ) {
+                    val setup = response.body()?.setup
+                    val punchline = response.body()?.punchline
+                    textView.text = setup.plus("\n").plus(punchline)
+                }
+
+                override fun onFailure(call: Call<AlternateJokeResponse?>, t: Throwable) {
+                    displaySnackBar(textView, textView, "Network Failure")
+                    Log.d(TAG, t.localizedMessage)
+                }
+            })
+        }
+
+        /************************** PROGRAMMING JOKES *******************************/
+        fun loadProgrammingJoke(textView: TextView) {
+            val client = Client
+            val apiService = client.getClient()?.create(Service::class.java)
+            val call: Call<JokeResponse> = apiService!!.getProgrammingJoke()
+            call.enqueue(object : Callback<JokeResponse?> {
+                override fun onResponse(
+                    call: Call<JokeResponse?>,
+                    response: Response<JokeResponse?>
+                ) {
+                    val result = response.body()
+                    val joke = result?.joke
+                    val setup = result?.setup
+                    val delivery = result?.delivery
+                    textView.text = joke.plus(setup).plus("\n").plus(delivery)
+                }
+
+                override fun onFailure(call: Call<JokeResponse?>, t: Throwable) {
+                    displaySnackBar(textView, textView, "Network Failure")
+                    Log.d(TAG, t.localizedMessage)
+                }
+            })
+        }
+
+        /************************** DARK JOKES ********************************/
+        fun loadDarkJoke(textView: TextView) {
+            val client = Client
+            val apiService = client.getClient()?.create(Service::class.java)
+            val call: Call<JokeResponse> = apiService!!.getDarkJoke()
+            call.enqueue(object : Callback<JokeResponse?> {
+                override fun onResponse(
+                    call: Call<JokeResponse?>,
+                    response: Response<JokeResponse?>
+                ) {
+                    val result = response.body()
+                    val joke = result?.joke
+                    val setup = result?.setup
+                    val delivery = result?.delivery
+                    textView.text = joke.plus(setup).plus("\n").plus(delivery)
+                }
+
+                override fun onFailure(call: Call<JokeResponse?>, t: Throwable) {
+                    displaySnackBar(textView, textView, "Network Failure")
+                    Log.d(TAG, t.localizedMessage)
+                }
+            })
+        }
+
+        /************************** MISCELLANEOUS JOKES ********************************/
+        fun loadMiscellaneousJoke(textView: TextView) {
+            val client = Client
+            val apiService = client.getClient()?.create(Service::class.java)
+            val call: Call<JokeResponse> = apiService!!.getMiscellaneousJoke()
+            call.enqueue(object : Callback<JokeResponse?> {
+                override fun onResponse(
+                    call: Call<JokeResponse?>,
+                    response: Response<JokeResponse?>
+                ) {
+                    val result = response.body()
+                    val joke = result?.joke
+                    val setup = result?.setup
+                    val delivery = result?.delivery
+                    textView.text = joke.plus(setup).plus("\n").plus(delivery)
+                }
+
+                override fun onFailure(call: Call<JokeResponse?>, t: Throwable) {
+                    displaySnackBar(textView, textView, "Network Failure")
                     Log.d(TAG, t.localizedMessage)
                 }
             })

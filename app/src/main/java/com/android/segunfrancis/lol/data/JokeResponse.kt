@@ -2,7 +2,8 @@ package com.android.segunfrancis.lol.data
 
 import com.google.gson.annotations.SerializedName
 
-data class JokeResponse(
+data class
+JokeResponse(
     @SerializedName(value = "category") val category: String,
     @SerializedName(value = "type") val type: String,
     @SerializedName(value = "joke") val joke: String,
