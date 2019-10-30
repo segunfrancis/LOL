@@ -19,6 +19,8 @@ class Utility {
     companion object {
 
         const val INSTANCE_STATE_KEY = "joke"
+        const val SHARED_PREF_KEY = "sharedPref"
+        const val APP_THEME = "app_theme_state"
 
         /************************** ANY JOKE ********************************/
         fun loadAnyJoke(textView: TextView) {

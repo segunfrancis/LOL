@@ -1,5 +1,6 @@
 package com.android.segunfrancis.lol
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -11,6 +12,8 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import androidx.appcompat.app.AppCompatDelegate
+import com.android.segunfrancis.lol.utils.Utility
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+
+        val pref = getSharedPreferences(Utility.SHARED_PREF_KEY, Activity.MODE_PRIVATE)
+        val theme = pref.getInt(Utility.APP_THEME, 0)
+        AppCompatDelegate.setDefaultNightMode(theme)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
