@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -26,6 +27,7 @@ class SettingsFragment : Fragment() {
             ViewModelProviders.of(this).get(SettingsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_settings, container, false)
         val switchTheme: SwitchMaterial = root.findViewById(R.id.switch_theme)
+        val policyText: TextView = root.findViewById(R.id.privacy_policy_text)
 
         switchTheme.setOnCheckedChangeListener { compoundButton, b ->
             if (compoundButton.isChecked) {
