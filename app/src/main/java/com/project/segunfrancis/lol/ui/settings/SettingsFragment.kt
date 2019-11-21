@@ -48,6 +48,10 @@ class SettingsFragment : Fragment() {
 /*        settingsViewModel.text.observe(this, Observer {
             textView.text = it
         })*/
+
+        policyText.setOnClickListener {
+            val policyUrl = "https://segunfrancis.github.io"
+        }
         return root
     }
 }
