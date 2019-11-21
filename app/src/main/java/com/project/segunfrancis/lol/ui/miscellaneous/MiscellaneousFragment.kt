@@ -1,6 +1,7 @@
 package com.project.segunfrancis.lol.ui.miscellaneous
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -47,7 +48,9 @@ class MiscellaneousFragment : Fragment() {
                     shareIntent.type = "text/plain"
                     startActivity(shareIntent)
                 } else {
-                    Snackbar.make(textView, "Cannot share empty item", Snackbar.LENGTH_LONG).show()
+                    val snackBar = Snackbar.make(textView, "Cannot share empty item", Snackbar.LENGTH_LONG)
+                    snackBar.setBackgroundTint(Color.rgb(0, 151, 167))
+                    snackBar.show()
                 }
             }
             shuffleImage.setOnClickListener {
