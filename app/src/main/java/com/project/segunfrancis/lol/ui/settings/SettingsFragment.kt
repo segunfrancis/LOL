@@ -1,12 +1,15 @@
 package com.project.segunfrancis.lol.ui.settings
 
 import android.app.Activity
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebChromeClient
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.project.segunfrancis.lol.R
@@ -16,7 +19,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 class SettingsFragment : Fragment() {
 
     private lateinit var settingsViewModel: SettingsViewModel
-    private  var nightMode: Int = 0
+    private var nightMode: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,7 +43,8 @@ class SettingsFragment : Fragment() {
         }
 
         // Saving theme into shared preference
-        val preference = root.context.getSharedPreferences(Utility.SHARED_PREF_KEY, Activity.MODE_PRIVATE)
+        val preference =
+            root.context.getSharedPreferences(Utility.SHARED_PREF_KEY, Activity.MODE_PRIVATE)
         val editor = preference.edit()
         editor.putInt(Utility.APP_THEME, nightMode)
         editor.apply()
@@ -51,6 +55,9 @@ class SettingsFragment : Fragment() {
 
         policyText.setOnClickListener {
             val policyUrl = "https://segunfrancis.github.io"
+            val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder()
+            val customTabsIntent = builder.build()
+            customTabsIntent.launchUrl(root.context, Uri.parse(policyUrl))
         }
         return root
     }
