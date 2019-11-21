@@ -7,37 +7,37 @@
 
     <fragment
         android:id="@+id/nav_any"
-        android:name="com.android.segunfrancis.lol.ui.any.AnyFragment"
+        android:name="com.project.segunfrancis.lol.ui.any.AnyFragment"
         android:label="@string/menu_any"
         tools:layout="@layout/fragment_any" />
 
     <fragment
         android:id="@+id/nav_programming"
-        android:name="com.android.segunfrancis.lol.ui.programming.ProgrammingFragment"
+        android:name="com.project.segunfrancis.lol.ui.programming.ProgrammingFragment"
         android:label="@string/menu_programming"
         tools:layout="@layout/fragment_programming" />
 
     <fragment
         android:id="@+id/nav_dark"
-        android:name="com.android.segunfrancis.lol.ui.dark.DarkFragment"
+        android:name="com.project.segunfrancis.lol.ui.dark.DarkFragment"
         android:label="@string/menu_dark"
         tools:layout="@layout/fragment_dark" />
 
     <fragment
         android:id="@+id/nav_miscellaneous"
-        android:name="com.android.segunfrancis.lol.ui.miscellaneous.MiscellaneousFragment"
+        android:name="com.project.segunfrancis.lol.ui.miscellaneous.MiscellaneousFragment"
         android:label="@string/menu_miscellaneous"
         tools:layout="@layout/fragment_miscellaneous" />
 
     <fragment
         android:id="@+id/nav_about"
-        android:name="com.android.segunfrancis.lol.ui.about.AboutFragment"
+        android:name="com.project.segunfrancis.lol.ui.about.AboutFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_about" />
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.android.segunfrancis.lol.ui.settings.SettingsFragment"
+        android:name="com.project.segunfrancis.lol.ui.settings.SettingsFragment"
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_about" />
 </navigation>
