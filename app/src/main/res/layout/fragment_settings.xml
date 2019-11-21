@@ -15,7 +15,7 @@
         android:paddingEnd="16dp"
         android:paddingBottom="16dp"
         android:text="Night Mode"
-        android:textColor="?android:attr/textColorSecondary"
+        android:textColor="@color/settings_text_color"
         android:textSize="18sp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,6 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
+        android:id="@+id/divider1"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="@color/colorDivider"
@@ -41,10 +42,11 @@
         android:paddingEnd="16dp"
         android:paddingBottom="16dp"
         android:text="Privacy Policy"
+        android:textColor="@color/settings_text_color"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/switch_theme" />
+        app:layout_constraintTop_toBottomOf="@id/divider1" />
 
     <View
         android:layout_width="0dp"
