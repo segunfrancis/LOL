@@ -12,10 +12,10 @@ import androidx.lifecycle.ViewModelProviders
 import com.android.segunfrancis.lol.R
 import com.android.segunfrancis.lol.utils.Utility
 import com.android.segunfrancis.lol.utils.Utility.Companion.loadMiscellaneousJoke
+import com.android.segunfrancis.lol.utils.Utility.Companion.loadMiscellaneousJoke2
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_miscellaneous.*
 
 class MiscellaneousFragment : Fragment() {
 
@@ -40,7 +40,7 @@ class MiscellaneousFragment : Fragment() {
         if (savedInstanceState != null) {
             textView.text = savedInstanceState.getString(Utility.INSTANCE_STATE_KEY)
         } else {
-            loadMiscellaneousJoke(textView, progressBar)
+            loadMiscellaneousJoke2(textView, progressBar)
             shareFab.setOnClickListener {
                 if (textView.text.isNotBlank()) {
                     val shareIntent = Intent(Intent.ACTION_SEND)
@@ -52,7 +52,7 @@ class MiscellaneousFragment : Fragment() {
                 }
             }
             shuffleImage.setOnClickListener {
-                loadMiscellaneousJoke(textView, progressBar)
+                loadMiscellaneousJoke2(textView, progressBar)
             }
         }
         return root

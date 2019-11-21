@@ -11,9 +11,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import android.view.Menu
 import androidx.appcompat.app.AppCompatDelegate
-import com.android.segunfrancis.lol.utils.Utility
+import com.android.segunfrancis.lol.utils.Utility.Companion.APP_THEME
+import com.android.segunfrancis.lol.utils.Utility.Companion.SHARED_PREF_KEY
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        val pref = getSharedPreferences(Utility.SHARED_PREF_KEY, Activity.MODE_PRIVATE)
-        val theme = pref.getInt(Utility.APP_THEME, 0)
+        val pref = getSharedPreferences(SHARED_PREF_KEY, Activity.MODE_PRIVATE)
+        val theme = pref.getInt(APP_THEME, 0)
         AppCompatDelegate.setDefaultNightMode(theme)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)

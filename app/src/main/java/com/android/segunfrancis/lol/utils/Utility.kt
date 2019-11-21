@@ -9,6 +9,7 @@ import com.android.segunfrancis.lol.api.Client
 import com.android.segunfrancis.lol.api.Service
 import com.android.segunfrancis.lol.data.AlternateJokeResponse
 import com.android.segunfrancis.lol.data.JokeResponse
+import com.android.segunfrancis.lol.data.MiscellaneousJokeResponse
 import com.android.segunfrancis.lol.ui.any.TAG
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
@@ -50,7 +51,8 @@ class Utility {
         fun loadAlternateJoke(textView: TextView, progressBar: ProgressBar) {
             val client = Client
             val apiService = client.getClient()?.create(Service::class.java)
-            val call: Call<AlternateJokeResponse> = apiService!!.getAlternateJoke("https://official-joke-api.appspot.com/random_joke")
+            val call: Call<AlternateJokeResponse> =
+                apiService!!.getAlternateJoke("https://official-joke-api.appspot.com/random_joke")
             call.enqueue(object : Callback<AlternateJokeResponse?> {
                 override fun onResponse(
                     call: Call<AlternateJokeResponse?>,
@@ -141,6 +143,32 @@ class Utility {
                 }
 
                 override fun onFailure(call: Call<JokeResponse?>, t: Throwable) {
+                    displaySnackBar(textView, textView, "Network Failure")
+                    Log.d(TAG, t.localizedMessage)
+                    progressBar.visibility = View.GONE
+                }
+            })
+        }
+
+        /************************** MISCELLANEOUS JOKES 2 ********************************/
+        fun loadMiscellaneousJoke2(textView: TextView, progressBar: ProgressBar) {
+            val client = Client
+            val apiService = client.getClient()?.create(Service::class.java)
+            val call: Call<MiscellaneousJokeResponse> =
+                apiService!!.getMiscellaneousJoke2("https://icanhazdadjoke.com/")
+            call.enqueue(object : Callback<MiscellaneousJokeResponse?> {
+                override fun onResponse(
+                    call: Call<MiscellaneousJokeResponse?>,
+                    response: Response<MiscellaneousJokeResponse?>
+                ) {
+                    Log.d(TAG, "Status Code: ${response.body()?.status}")
+                    val result = response.body()
+                    val joke = result?.joke
+                    textView.text = joke
+                    progressBar.visibility = View.GONE
+                }
+
+                override fun onFailure(call: Call<MiscellaneousJokeResponse?>, t: Throwable) {
                     displaySnackBar(textView, textView, "Network Failure")
                     Log.d(TAG, t.localizedMessage)
                     progressBar.visibility = View.GONE

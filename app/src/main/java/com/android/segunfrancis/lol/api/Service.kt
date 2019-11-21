@@ -2,8 +2,10 @@ package com.android.segunfrancis.lol.api
 
 import com.android.segunfrancis.lol.data.AlternateJokeResponse
 import com.android.segunfrancis.lol.data.JokeResponse
+import com.android.segunfrancis.lol.data.MiscellaneousJokeResponse
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.Url
 
 interface Service {
@@ -21,4 +23,8 @@ interface Service {
 
     @GET(value = "miscellaneous")
     fun getMiscellaneousJoke(): Call<JokeResponse>
+
+    @GET
+    @Headers(value = ["Accept: application/json"])
+    fun getMiscellaneousJoke2(@Url url: String): Call<MiscellaneousJokeResponse>
 }
