@@ -15,8 +15,8 @@ android {
         applicationId "com.android.segunfrancis.lol"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 3
-        versionName "2.0-beta02"
+        versionCode 4
+        versionName "2.0-beta03"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
