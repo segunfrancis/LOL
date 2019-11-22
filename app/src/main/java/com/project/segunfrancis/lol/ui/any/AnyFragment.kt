@@ -8,14 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.project.segunfrancis.lol.R
 import com.project.segunfrancis.lol.utils.Utility.Companion.INSTANCE_STATE_KEY
 import com.project.segunfrancis.lol.utils.Utility.Companion.loadAlternateJoke
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import kotlin.system.exitProcess
 
 class AnyFragment : Fragment() {
 
@@ -23,6 +26,26 @@ class AnyFragment : Fragment() {
     private lateinit var shuffleImage: ExtendedFloatingActionButton
     private lateinit var shareFab: FloatingActionButton
     private lateinit var progressBar: ProgressBar
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val dialog = MaterialAlertDialogBuilder(context).apply {
+                    setMessage("Are you sure you want to exit?")
+                    setPositiveButton("YES") { dialogInterface, i ->
+                        dialogInterface.dismiss()
+                        exitProcess(0)
+                    }
+                    setNegativeButton("NO") { dialogInterface, i ->
+                        dialogInterface.dismiss()
+                    }
+                }
+                dialog.create().show()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this@AnyFragment, onBackPressedCallback)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
