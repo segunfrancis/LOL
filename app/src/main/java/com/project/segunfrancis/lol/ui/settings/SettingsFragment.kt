@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebChromeClient
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.browser.customtabs.CustomTabsIntent
@@ -57,6 +56,7 @@ class SettingsFragment : Fragment() {
             val policyUrl = "https://segunfrancis.github.io"
             val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder()
             val customTabsIntent = builder.build()
+            builder.setToolbarColor(resources.getColor(R.color.colorPrimary))
             customTabsIntent.launchUrl(root.context, Uri.parse(policyUrl))
         }
         return root
