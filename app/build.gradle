@@ -12,11 +12,11 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "com.android.segunfrancis.lol"
+        applicationId "com.project.segunfrancis.lol"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 5
-        versionName "2.0.0"
+        versionName "2.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
