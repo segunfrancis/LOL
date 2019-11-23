@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "746365836615",
+    "firebase_url": "https://lolfirebaseproject-519bb.firebaseio.com",
+    "project_id": "lolfirebaseproject-519bb",
+    "storage_bucket": "lolfirebaseproject-519bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746365836615:android:f1caa532849927ed820062",
+        "android_client_info": {
+          "package_name": "com.project.segunfrancis.lol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "746365836615-mk24up4129uh6hqbqi2ml74650umjvv5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.segunfrancis.lol",
+            "certificate_hash": "3a717cc81d8b128c2ae6ca7d5578f223aa77b374"
+          }
+        },
+        {
+          "client_id": "746365836615-lcmverqbjj1t9t57k7t3lhhvg15mm6h4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRa9wstFPQNSpQ7UyH8d5x2RjsacS2zu8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "746365836615-lcmverqbjj1t9t57k7t3lhhvg15mm6h4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
