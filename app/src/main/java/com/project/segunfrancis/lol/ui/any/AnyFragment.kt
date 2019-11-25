@@ -69,7 +69,8 @@ class AnyFragment : Fragment() {
             shareFab.setOnClickListener {
                 if (textView.text.isNotBlank()) {
                     val shareIntent = Intent(Intent.ACTION_SEND)
-                    shareIntent.putExtra(Intent.EXTRA_TEXT, "${textView.text} \n #LOL")
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, "${textView.text} \n #LOL \n" +
+                            "https://play.google.com/store/apps/details?id=com.project.segunfrancis.lol")
                     shareIntent.type = "text/plain"
                     startActivity(shareIntent)
                 } else {
