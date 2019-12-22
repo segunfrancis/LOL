@@ -13,11 +13,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.project.segunfrancis.lol.R
-import com.project.segunfrancis.lol.utils.Utility.Companion.INSTANCE_STATE_KEY
-import com.project.segunfrancis.lol.utils.Utility.Companion.loadAlternateJoke
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import com.project.segunfrancis.lol.utils.Utility.INSTANCE_STATE_KEY
+import com.project.segunfrancis.lol.utils.Utility.loadAlternateJoke
 import kotlin.system.exitProcess
 
 class AnyFragment : Fragment() {

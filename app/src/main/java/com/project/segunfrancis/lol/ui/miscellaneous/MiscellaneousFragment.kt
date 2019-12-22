@@ -12,10 +12,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.project.segunfrancis.lol.R
 import com.project.segunfrancis.lol.utils.Utility
-import com.project.segunfrancis.lol.utils.Utility.Companion.loadMiscellaneousJoke2
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import com.project.segunfrancis.lol.utils.Utility.loadMiscellaneousJoke2
 
 class MiscellaneousFragment : Fragment() {
 

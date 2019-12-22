@@ -1,6 +1,5 @@
 package com.project.segunfrancis.lol
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -11,12 +10,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
-import com.project.segunfrancis.lol.utils.Utility.Companion.APP_THEME
-import com.project.segunfrancis.lol.utils.Utility.Companion.SHARED_PREF_KEY
 
 class MainActivity : AppCompatActivity() {
 
