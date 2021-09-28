@@ -1,80 +1,92 @@
 package com.project.segunfrancis.lol.ui.any
 
-import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.project.segunfrancis.lol.R
-import com.google.android.material.snackbar.Snackbar
 import com.project.segunfrancis.lol.databinding.FragmentAnyBinding
 import com.project.segunfrancis.lol.ui.model.Joke
 import com.project.segunfrancis.lol.ui.model.JokeCategory
 import com.project.segunfrancis.lol.ui.presentation_util.NetworkState
 import com.project.segunfrancis.lol.ui.presentation_util.viewBinding
-import com.project.segunfrancis.lol.utils.Utility.INSTANCE_STATE_KEY
+import com.project.segunfrancis.lol.utils.share
+import com.project.segunfrancis.lol.utils.showMessage
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class AnyFragment : Fragment(R.layout.fragment_any) {
 
     private val viewModel: AnyViewModel by viewModel()
     private val binding: FragmentAnyBinding by viewBinding(FragmentAnyBinding::bind)
+    private lateinit var jokeString: String
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (savedInstanceState != null) {
-            binding.textHome.text = savedInstanceState.getString(INSTANCE_STATE_KEY)
-        } else {
-            //loadAlternateJoke(binding.textHome, binding.progressBar)
+        setupObservers()
 
-            binding.shareFab.setOnClickListener {
-                if (binding.textHome.text.isNotBlank()) {
-                    val shareIntent = Intent(Intent.ACTION_SEND)
-                    shareIntent.putExtra(Intent.EXTRA_TEXT, "${binding.textHome.text} \n #LOL \n" +
-                            "https://play.google.com/store/apps/details?id=com.project.segunfrancis.lol")
-                    shareIntent.type = "text/plain"
-                    startActivity(shareIntent)
-                } else {
-                    val snackBar = Snackbar.make(binding.textHome, "Cannot share empty item", Snackbar.LENGTH_LONG)
-                    snackBar.setBackgroundTint(Color.rgb(0, 151, 167))
-                    snackBar.show()
-                }
-            }
-            /*binding.shuffleButton.setOnClickListener {
-                viewModel.getAnyJoke(JokeCategory.ANY.value)
-            }*/
-        }
+        setupClickListeners()
+    }
 
+    private fun setupObservers() {
         viewModel.anyJokeResponse.observe(viewLifecycleOwner) { state ->
-            when(state) {
+            when (state) {
                 is NetworkState.Loading -> handleLoading()
                 is NetworkState.Success -> handleSuccess(state.joke)
                 is NetworkState.Error -> handleError(state.error)
             }
+            Timber.d("$state")
         }
     }
 
-    private fun handleError(error: Throwable) {
+    private fun setupClickListeners() {
+        binding.genericInclude.shareFab.setOnClickListener {
+            if (::jokeString.isInitialized && jokeString.isNotBlank()) {
+                share(binding.genericInclude.textJoke.text.toString())
+            } else {
+                it.showMessage("Cannot share empty item")
+            }
+        }
+    }
 
+    private fun handleError(error: Throwable) = with(binding) {
+        root.showMessage(error.localizedMessage, R.string.text_retry, indefiniteDuration = true) {
+            viewModel.getAnyJoke(JokeCategory.ANY.value)
+        }
+        genericInclude.twoTypeLayout.isGone = true
+        genericInclude.textJoke.isGone = true
     }
 
     private fun handleSuccess(joke: Joke) {
-        when(joke) {
-            is Joke.OneTypeJoke -> { }
-            is Joke.TwoTypeJoke -> { }
+        when (joke) {
+            is Joke.OneTypeJoke -> setupOneTypeUI(joke)
+            is Joke.TwoTypeJoke -> setupTwoTypeUI(joke)
         }
-        binding.progressBar.isGone = true
+        binding.genericInclude.progressBar.isGone = true
     }
 
-    private fun handleLoading() = with(binding) {
+    private fun setupOneTypeUI(joke: Joke.OneTypeJoke) = with(binding.genericInclude) {
+        textJoke.apply {
+            text = joke.joke
+            isVisible = true
+        }
+        twoTypeLayout.isGone = true
+        jokeString = joke.joke
+    }
+
+    private fun setupTwoTypeUI(joke: Joke.TwoTypeJoke) = with(binding.genericInclude) {
+        textSetup.text = joke.setup
+        textDelivery.text = joke.delivery
+        twoTypeLayout.isVisible = true
+        textJoke.isGone = true
+        jokeString = joke.setup.plus("\n").plus(joke.delivery)
+    }
+
+    private fun handleLoading() = with(binding.genericInclude) {
         progressBar.isVisible = true
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        outState.putString(INSTANCE_STATE_KEY, binding.textHome.text.toString())
-        super.onSaveInstanceState(outState)
+        twoTypeLayout.isGone = true
+        textJoke.isGone = true
     }
 }

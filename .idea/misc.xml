@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/layout/fragment_about.xml" value="0.21203703703703702" />
         <entry key="app/src/main/res/layout/fragment_any.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_dark.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/layout_generic_item.xml" value="0.2578125" />
       </map>
     </option>
   </component>
