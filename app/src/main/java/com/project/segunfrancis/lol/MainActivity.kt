@@ -10,14 +10,20 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.navigation.NavController
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var mAdView : AdView
+    private lateinit var mAdView: AdView
+    private val navController: NavController by lazy {
+        findNavController(R.id.nav_host_fragment)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,10 +59,35 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+
+        }
+    }
+
+    private fun displayExitDialog() {
+        val dialog = MaterialAlertDialogBuilder(this@MainActivity).apply {
+            setMessage("Are you sure you want to exit?")
+            setPositiveButton("YES") { dialogInterface, _ ->
+                dialogInterface.dismiss()
+                exitProcess(0)
+            }
+            setNegativeButton("NO") { dialogInterface, _ ->
+                dialogInterface.dismiss()
+            }
+        }
+        dialog.create().show()
+    }
+
+    override fun onBackPressed() {
+        if (navController.currentDestination?.id == R.id.nav_any) {
+            displayExitDialog()
+        } else {
+            super.onBackPressed()
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 }
