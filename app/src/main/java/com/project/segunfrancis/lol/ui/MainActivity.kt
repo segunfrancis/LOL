@@ -1,4 +1,4 @@
-package com.project.segunfrancis.lol
+package com.project.segunfrancis.lol.ui
 
 import android.os.Bundle
 import androidx.navigation.findNavController
@@ -6,45 +6,41 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.navigation.NavController
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.project.segunfrancis.lol.BuildConfig
+import com.project.segunfrancis.lol.R
+import com.project.segunfrancis.lol.databinding.ActivityMainBinding
+import com.project.segunfrancis.lol.ui.any.AnyViewModel
+import com.project.segunfrancis.lol.ui.model.JokeCategory
+import com.project.segunfrancis.lol.ui.presentation_util.viewBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
+    private val binding: ActivityMainBinding by viewBinding(ActivityMainBinding::inflate)
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var mAdView: AdView
+    private val viewModel: AnyViewModel by viewModel()
     private val navController: NavController by lazy {
         findNavController(R.id.nav_host_fragment)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
-        // Initialize Google adMob
-        MobileAds.initialize(this) {}
-        mAdView = findViewById(R.id.adView)
-        val adRequest = AdRequest.Builder().build()
-        mAdView.loadAd(adRequest)
+        setupAd()
 
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        setupShuffleButton()
 
-        /*val pref = getSharedPreferences(SHARED_PREF_KEY, Activity.MODE_PRIVATE)
-        val theme = pref.getInt(APP_THEME, 0)
-        AppCompatDelegate.setDefaultNightMode(theme)*/
+        setSupportActionBar(binding.mainInclude.toolbar)
 
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        val navView: NavigationView = findViewById(R.id.nav_view)
-        val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
@@ -55,14 +51,29 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_miscellaneous,
                 R.id.nav_about,
                 R.id.nav_settings
-            ), drawerLayout
+            ), binding.drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        binding.navView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
         }
+    }
+
+    private fun setupShuffleButton() = with(binding) {
+        mainInclude.contentInclude.shuffleButton.setOnClickListener {
+            viewModel.getAnyJoke(JokeCategory.ANY.value)
+        }
+    }
+
+    private fun setupAd() = with(binding) {
+        val adRequest = AdRequest.Builder().build()
+        /*mainInclude.adView.apply {
+            //adSize = AdSize.BANNER
+            //adUnitId = BuildConfig.AD_UNIT_ID
+        }*/
+        mainInclude.adView.loadAd(adRequest)
     }
 
     private fun displayExitDialog() {

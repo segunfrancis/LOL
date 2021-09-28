@@ -1,11 +1,12 @@
 package com.project.segunfrancis.lol.api
 
+import com.project.segunfrancis.lol.utils.AppConstants.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+@Deprecated("Replace with DI implementation")
 class Client {
     companion object {
-        private const val BASE_URL = "https://sv443.net/jokeapi/category/"
         var retrofit: Retrofit? = null
 
         fun getClient(): Retrofit? {

@@ -3,36 +3,35 @@ package com.project.segunfrancis.lol.ui.any
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.project.segunfrancis.lol.api.Client
-import com.project.segunfrancis.lol.api.Service
-import com.project.segunfrancis.lol.data.JokeResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import androidx.lifecycle.viewModelScope
+import com.project.segunfrancis.lol.repository.LolRepository
+import com.project.segunfrancis.lol.ui.model.Joke
+import com.project.segunfrancis.lol.ui.model.JokeCategory
+import com.project.segunfrancis.lol.ui.presentation_util.NetworkState
+import com.project.segunfrancis.lol.ui.presentation_util.mapToJoke
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.launch
+import timber.log.Timber
 
-class AnyViewModel : ViewModel() {
+class AnyViewModel(private val repository: LolRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-/*
-        val client = Client
-        val apiService = client.getClient()?.create(Service::class.java)
-        val call: Call<JokeResponse> = apiService!!.getAnyJoke()
-        call.enqueue(object : Callback<JokeResponse?> {
-            override fun onResponse(
-                call: Call<JokeResponse?>,
-                response: Response<JokeResponse?>
-            ) {
-                val result = response.body()
-                val joke = result?.joke
-                val setup = result?.setup
-                val delivery = result?.delivery
-                value = joke.plus(setup).plus("\n").plus(delivery)
-            }
+    private val _anyJokesResponse = MutableLiveData<NetworkState<Joke>>()
+    val anyJokeResponse: LiveData<NetworkState<Joke>> get() = _anyJokesResponse
 
-            override fun onFailure(call: Call<JokeResponse?>, t: Throwable) {
-                value = t.localizedMessage
-            }
-        })*/
+    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        Timber.e(throwable)
+        _anyJokesResponse.postValue(NetworkState.Error(throwable))
     }
-    val text: LiveData<String> = _text
+
+    init {
+        getAnyJoke(JokeCategory.ANY.value)
+    }
+
+    fun getAnyJoke(category: String) {
+        _anyJokesResponse.postValue(NetworkState.Loading)
+        viewModelScope.launch(coroutineExceptionHandler) {
+            val response = repository.getJokes(category)
+            _anyJokesResponse.postValue(NetworkState.Success(response.mapToJoke()))
+        }
+    }
 }

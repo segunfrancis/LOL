@@ -8,6 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Url
 
+@Deprecated("Replace with new service implementation")
 interface Service {
     @GET(value = "any")
     fun getAnyJoke(): Call<JokeResponse>

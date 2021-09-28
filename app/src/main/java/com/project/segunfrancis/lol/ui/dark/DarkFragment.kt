@@ -36,7 +36,7 @@ class DarkFragment : Fragment() {
         textView = root.findViewById(R.id.text_dark_joke)
         progressBar = root.findViewById(R.id.progressBar)
         shuffleImage = root.findViewById(R.id.imageButton)
-        shareFab = root.findViewById(R.id.fab)
+        shareFab = root.findViewById(R.id.shareFab)
         if (savedInstanceState != null) {
             textView.text = savedInstanceState.getString(Utility.INSTANCE_STATE_KEY)
         } else {
