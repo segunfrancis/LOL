@@ -41,22 +41,32 @@ class AnyFragment : Fragment(R.layout.fragment_any) {
         }
     }
 
-    private fun setupClickListeners() {
-        binding.genericInclude.shareFab.setOnClickListener {
+    private fun setupClickListeners() = with(binding) {
+        genericInclude.shareFab.setOnClickListener {
             if (::jokeString.isInitialized && jokeString.isNotBlank()) {
-                share(binding.genericInclude.textJoke.text.toString())
+                share(genericInclude.textJoke.text.toString())
             } else {
                 it.showMessage("Cannot share empty item")
             }
         }
+
+        genericInclude.shuffleButton.setOnClickListener {
+            jokeString = ""
+            viewModel.getAnyJoke(JokeCategory.ANY.value)
+        }
     }
 
     private fun handleError(error: Throwable) = with(binding) {
-        root.showMessage(error.localizedMessage, R.string.text_retry, indefiniteDuration = true) {
+        genericInclude.shuffleButton.showMessage(
+            error.localizedMessage,
+            R.string.text_retry,
+            indefiniteDuration = true
+        ) {
             viewModel.getAnyJoke(JokeCategory.ANY.value)
         }
         genericInclude.twoTypeLayout.isGone = true
         genericInclude.textJoke.isGone = true
+        genericInclude.progressBar.isGone = true
     }
 
     private fun handleSuccess(joke: Joke) {

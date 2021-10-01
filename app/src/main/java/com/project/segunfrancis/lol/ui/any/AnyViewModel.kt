@@ -31,7 +31,6 @@ class AnyViewModel(private val repository: LolRepository) : ViewModel() {
         _anyJokesResponse.postValue(NetworkState.Loading)
         viewModelScope.launch(coroutineExceptionHandler) {
             val response = repository.getJokes(category)
-            Timber.d("${response.mapToJoke()}")
             _anyJokesResponse.postValue(NetworkState.Success(response.mapToJoke()))
         }
     }

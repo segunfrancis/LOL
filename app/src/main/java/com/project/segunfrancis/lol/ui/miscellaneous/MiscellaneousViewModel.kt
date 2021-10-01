@@ -3,11 +3,35 @@ package com.project.segunfrancis.lol.ui.miscellaneous
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.project.segunfrancis.lol.repository.LolRepository
+import com.project.segunfrancis.lol.ui.model.Joke
+import com.project.segunfrancis.lol.ui.model.JokeCategory
+import com.project.segunfrancis.lol.ui.presentation_util.NetworkState
+import com.project.segunfrancis.lol.ui.presentation_util.mapToJoke
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.launch
+import timber.log.Timber
 
-class MiscellaneousViewModel : ViewModel() {
+class MiscellaneousViewModel(private val repository: LolRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is tools Fragment"
+    private val _miscJokesResponse = MutableLiveData<NetworkState<Joke>>()
+    val miscJokeResponse: LiveData<NetworkState<Joke>> get() = _miscJokesResponse
+
+    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        Timber.e(throwable)
+        _miscJokesResponse.postValue(NetworkState.Error(throwable))
     }
-    val text: LiveData<String> = _text
+
+    init {
+        getMiscJoke(JokeCategory.MISC.value)
+    }
+
+    fun getMiscJoke(category: String) {
+        _miscJokesResponse.postValue(NetworkState.Loading)
+        viewModelScope.launch(coroutineExceptionHandler) {
+            val response = repository.getJokes(category)
+            _miscJokesResponse.postValue(NetworkState.Success(response.mapToJoke()))
+        }
+    }
 }
