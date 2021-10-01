@@ -38,6 +38,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_programming,
                 R.id.nav_dark,
                 R.id.nav_miscellaneous,
+                R.id.nav_pun,
+                R.id.nav_christmas,
+                R.id.nav_spooky,
                 R.id.nav_about,
                 R.id.nav_settings
             ), binding.drawerLayout

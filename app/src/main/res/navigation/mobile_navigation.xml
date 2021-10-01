@@ -30,6 +30,24 @@
         tools:layout="@layout/fragment_miscellaneous" />
 
     <fragment
+        android:id="@+id/nav_pun"
+        android:name="com.project.segunfrancis.lol.ui.pun.PunFragment"
+        android:label="@string/menu_pun"
+        tools:layout="@layout/pun_fragment" />
+
+    <fragment
+        android:id="@+id/nav_christmas"
+        android:name="com.project.segunfrancis.lol.ui.christmas.ChristmasFragment"
+        android:label="@string/menu_christmas"
+        tools:layout="@layout/christmas_fragment" />
+
+    <fragment
+        android:id="@+id/nav_spooky"
+        android:name="com.project.segunfrancis.lol.ui.spooky.SpookyFragment"
+        android:label="@string/menu_spooky"
+        tools:layout="@layout/spooky_fragment" />
+
+    <fragment
         android:id="@+id/nav_about"
         android:name="com.project.segunfrancis.lol.ui.about.AboutFragment"
         android:label="@string/menu_about"

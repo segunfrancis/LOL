@@ -15,4 +15,8 @@
     <string name="menu_settings">Settings</string>
     <string name="text_shuffle">Shuffle</string>
     <string name="text_retry">RETRY</string>
+    <string name="menu_spooky">Spooky Jokes</string>
+    <string name="menu_christmas">Christmas Jokes</string>
+    <string name="menu_pun">Pun Jokes</string>
+    <string name="text_communicate">Communicate</string>
 </resources>

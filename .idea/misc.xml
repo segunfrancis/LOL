@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_bowling.xml" value="0.1365" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1203125" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/christmas_fragment.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_about.xml" value="0.21203703703703702" />
         <entry key="app/src/main/res/layout/fragment_any.xml" value="0.2578125" />
@@ -12,6 +14,8 @@
         <entry key="app/src/main/res/layout/fragment_miscellaneous.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_programming.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/layout_generic_item.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/spooky_fragment.xml" value="0.21203703703703702" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.2578125" />
       </map>
     </option>
   </component>
