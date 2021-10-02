@@ -1,12 +1,12 @@
-package com.project.segunfrancis.lol.ui.programming
+package com.project.segunfrancis.lol.ui.christmas
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import com.project.segunfrancis.lol.R
-import com.project.segunfrancis.lol.databinding.FragmentProgrammingBinding
+import com.project.segunfrancis.lol.databinding.ChristmasFragmentBinding
 import com.project.segunfrancis.lol.ui.model.Joke
 import com.project.segunfrancis.lol.ui.model.JokeCategory
 import com.project.segunfrancis.lol.ui.presentation_util.NetworkState
@@ -16,10 +16,10 @@ import com.project.segunfrancis.lol.utils.showMessage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
-class ProgrammingFragment : Fragment(R.layout.fragment_programming) {
+class ChristmasFragment : Fragment(R.layout.christmas_fragment) {
 
-    private val binding by viewBinding(FragmentProgrammingBinding::bind)
-    private val viewModel by viewModel<ProgrammingViewModel>()
+    private val binding by viewBinding(ChristmasFragmentBinding::bind)
+    private val viewModel by viewModel<ChristmasViewModel>()
     private lateinit var jokeString: String
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,7 +31,7 @@ class ProgrammingFragment : Fragment(R.layout.fragment_programming) {
     }
 
     private fun setupObservers() {
-        viewModel.programmingJokeResponse.observe(viewLifecycleOwner) { state ->
+        viewModel.christmasJokeResponse.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is NetworkState.Loading -> handleLoading()
                 is NetworkState.Success -> handleSuccess(state.joke)
@@ -52,7 +52,7 @@ class ProgrammingFragment : Fragment(R.layout.fragment_programming) {
 
         genericInclude.shuffleButton.setOnClickListener {
             jokeString = ""
-            viewModel.getAnyJoke(JokeCategory.PROGRAMMING.value)
+            viewModel.getChristmasJoke(JokeCategory.CHRISTMAS.value)
         }
     }
 
@@ -62,7 +62,7 @@ class ProgrammingFragment : Fragment(R.layout.fragment_programming) {
             R.string.text_retry,
             indefiniteDuration = true
         ) {
-            viewModel.getAnyJoke(JokeCategory.PROGRAMMING.value)
+            viewModel.getChristmasJoke(JokeCategory.CHRISTMAS.value)
         }
         genericInclude.twoTypeLayout.isGone = true
         genericInclude.textJoke.isGone = true

@@ -1,18 +1,16 @@
 package com.project.segunfrancis.lol
 
-import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import androidx.test.espresso.Espresso.*
 import androidx.test.espresso.matcher.ViewMatchers.*
-import org.hamcrest.Matchers.*
 import androidx.test.espresso.action.ViewActions.*
 import org.junit.Rule
-import androidx.test.espresso.assertion.ViewAssertions.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import androidx.test.espresso.contrib.NavigationViewActions
 import androidx.test.espresso.contrib.DrawerActions
+import com.project.segunfrancis.lol.ui.MainActivity
 
 /**
  * Created by SegunFrancis

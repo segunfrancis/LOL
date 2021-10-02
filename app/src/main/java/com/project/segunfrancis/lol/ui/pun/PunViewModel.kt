@@ -1,4 +1,4 @@
-package com.project.segunfrancis.lol.ui.miscellaneous
+package com.project.segunfrancis.lol.ui.pun
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,25 +13,25 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class MiscellaneousViewModel(private val repository: LolRepository) : ViewModel() {
+class PunViewModel(private val repository: LolRepository) : ViewModel() {
 
-    private val _miscJokesResponse = MutableLiveData<NetworkState<Joke>>()
-    val miscJokeResponse: LiveData<NetworkState<Joke>> get() = _miscJokesResponse
+    private val _punJokesResponse = MutableLiveData<NetworkState<Joke>>()
+    val punJokeResponse: LiveData<NetworkState<Joke>> get() = _punJokesResponse
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         Timber.e(throwable)
-        _miscJokesResponse.postValue(NetworkState.Error(throwable))
+        _punJokesResponse.postValue(NetworkState.Error(throwable))
     }
 
     init {
-        getMiscJoke(JokeCategory.MISC.value)
+        getPunJoke(JokeCategory.PUN.value)
     }
 
-    fun getMiscJoke(category: String) {
-        _miscJokesResponse.postValue(NetworkState.Loading)
+    fun getPunJoke(category: String) {
+        _punJokesResponse.postValue(NetworkState.Loading)
         viewModelScope.launch(coroutineExceptionHandler) {
             val response = repository.getJokes(category)
-            _miscJokesResponse.postValue(NetworkState.Success(response.mapToJoke()))
+            _punJokesResponse.postValue(NetworkState.Success(response.mapToJoke()))
         }
     }
 }

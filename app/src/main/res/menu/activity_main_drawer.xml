@@ -17,17 +17,30 @@
             android:icon="@drawable/ic_emoticon_devil"
             android:title="@string/menu_dark" />
         <item
+            android:id="@+id/nav_pun"
+            android:icon="@drawable/ic_pun"
+            android:title="@string/menu_pun" />
+        <item
+            android:id="@+id/nav_christmas"
+            android:icon="@drawable/ic_christmas"
+            android:title="@string/menu_christmas" />
+        <item
+            android:id="@+id/nav_spooky"
+            android:icon="@drawable/ic_spooky"
+            android:title="@string/menu_spooky" />
+        <item
             android:id="@+id/nav_miscellaneous"
             android:icon="@drawable/ic_bowling"
             android:title="@string/menu_miscellaneous" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/text_communicate">
         <menu>
-            <!--<item
+            <item
                 android:id="@+id/nav_about"
                 android:icon="@drawable/ic_menu_about"
-                android:title="@string/menu_about" />-->
+                android:title="@string/menu_about"
+                android:visible="false"/>
             <item
                 android:id="@+id/nav_settings"
                 android:icon="@drawable/ic_menu_settings"

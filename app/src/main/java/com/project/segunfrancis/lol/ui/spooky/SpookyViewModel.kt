@@ -1,4 +1,4 @@
-package com.project.segunfrancis.lol.ui.miscellaneous
+package com.project.segunfrancis.lol.ui.spooky
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,25 +13,25 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class MiscellaneousViewModel(private val repository: LolRepository) : ViewModel() {
+class SpookyViewModel(private val repository: LolRepository) : ViewModel() {
 
-    private val _miscJokesResponse = MutableLiveData<NetworkState<Joke>>()
-    val miscJokeResponse: LiveData<NetworkState<Joke>> get() = _miscJokesResponse
+    private val _spookyJokesResponse = MutableLiveData<NetworkState<Joke>>()
+    val spookyJokeResponse: LiveData<NetworkState<Joke>> get() = _spookyJokesResponse
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         Timber.e(throwable)
-        _miscJokesResponse.postValue(NetworkState.Error(throwable))
+        _spookyJokesResponse.postValue(NetworkState.Error(throwable))
     }
 
     init {
-        getMiscJoke(JokeCategory.MISC.value)
+        getSpookyJoke(JokeCategory.SPOOKY.value)
     }
 
-    fun getMiscJoke(category: String) {
-        _miscJokesResponse.postValue(NetworkState.Loading)
+    fun getSpookyJoke(category: String) {
+        _spookyJokesResponse.postValue(NetworkState.Loading)
         viewModelScope.launch(coroutineExceptionHandler) {
             val response = repository.getJokes(category)
-            _miscJokesResponse.postValue(NetworkState.Success(response.mapToJoke()))
+            _spookyJokesResponse.postValue(NetworkState.Success(response.mapToJoke()))
         }
     }
 }

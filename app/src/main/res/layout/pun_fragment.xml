@@ -4,9 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".ui.programming.ProgrammingFragment">
+    tools:context=".ui.pun.PunFragment">
 
     <include
         android:id="@+id/generic_include"
         layout="@layout/layout_generic_item" />
+
 </ScrollView>

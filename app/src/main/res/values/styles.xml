@@ -17,4 +17,13 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="FABStyle" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
+        <item name="android:text">@string/text_shuffle</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="icon">@drawable/ic_shuffle</item>
+        <item name="iconSize">32dp</item>
+        <item name="iconTint">@android:color/white</item>
+        <item name="backgroundTint">@color/colorAccent</item>
+    </style>
 </resources>
