@@ -7,6 +7,5 @@ import retrofit2.http.Path
 interface LolService {
 
     @GET("{category}")
-    suspend fun getJoke(@Path("category") category: String) : JokeResponse
-
+    suspend fun getJoke(@Path("category") category: String): JokeResponse
 }

@@ -14,7 +14,7 @@ import com.project.segunfrancis.lol.R
 class SettingsFragment : Fragment() {
 
     private lateinit var settingsViewModel: SettingsViewModel
-    //private var nightMode: Int = 0
+    // private var nightMode: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,7 +24,7 @@ class SettingsFragment : Fragment() {
         settingsViewModel =
             ViewModelProviders.of(this).get(SettingsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_settings, container, false)
-        //val switchTheme: SwitchMaterial = root.findViewById(R.id.switch_theme)
+        // val switchTheme: SwitchMaterial = root.findViewById(R.id.switch_theme)
         val policyText: TextView = root.findViewById(R.id.privacy_policy_text)
 
         /*switchTheme.setOnCheckedChangeListener { compoundButton, b ->

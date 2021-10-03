@@ -99,7 +99,4 @@ class MiscellaneousFragment : Fragment(R.layout.fragment_miscellaneous) {
         twoTypeLayout.isGone = true
         textJoke.isGone = true
     }
-
-
-
 }

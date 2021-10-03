@@ -1,16 +1,16 @@
 package com.project.segunfrancis.lol
 
-import org.junit.Test
-import org.junit.runner.RunWith
-import androidx.test.espresso.Espresso.*
-import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.espresso.action.ViewActions.*
-import org.junit.Rule
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.contrib.DrawerActions
+import androidx.test.espresso.contrib.NavigationViewActions
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import androidx.test.espresso.contrib.NavigationViewActions
-import androidx.test.espresso.contrib.DrawerActions
 import com.project.segunfrancis.lol.ui.MainActivity
+import org.junit.Rule
+import org.junit.Test
+import org.junit.runner.RunWith
 
 /**
  * Created by SegunFrancis
@@ -27,10 +27,10 @@ class NavigationTest {
     fun openAnyFragmentAfterNavigationDrawerItemSelected() {
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())
         onView(withId(R.id.nav_view)).perform(NavigationViewActions.navigateTo(R.id.nav_dark))
-        onView(withId(R.id.imageButton)).perform(click())
+        onView(withId(R.id.shuffleButton)).perform(click())
 
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())
         onView(withId(R.id.nav_view)).perform(NavigationViewActions.navigateTo(R.id.nav_any))
-        onView(withId(R.id.imageButton)).perform(click())
+        onView(withId(R.id.shuffleButton)).perform(click())
     }
 }
