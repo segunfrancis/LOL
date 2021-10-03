@@ -5,12 +5,12 @@ import com.google.gson.GsonBuilder
 import com.project.segunfrancis.lol.api.LolService
 import com.project.segunfrancis.lol.utils.AppConstants.BASE_URL
 import com.project.segunfrancis.lol.utils.AppConstants.NETWORK_TIMEOUT
+import java.util.concurrent.TimeUnit
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
 val remoteModule = module {
 

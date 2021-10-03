@@ -63,6 +63,7 @@
                 android:layout_height="25dp"
                 android:layout_gravity="center"
                 android:indeterminate="true"
+                android:visibility="gone"
                 app:indicatorColor="@color/colorAccent"
                 app:indicatorSize="25dp"
                 app:trackCornerRadius="2dp"

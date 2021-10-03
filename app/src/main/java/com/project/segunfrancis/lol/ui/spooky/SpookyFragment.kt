@@ -1,10 +1,10 @@
 package com.project.segunfrancis.lol.ui.spooky
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import com.project.segunfrancis.lol.R
 import com.project.segunfrancis.lol.databinding.SpookyFragmentBinding
 import com.project.segunfrancis.lol.ui.model.Joke
