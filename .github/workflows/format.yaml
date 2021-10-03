@@ -14,8 +14,8 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
 
-      - name: Administratice permission
-        run: ./gradlew chmod +x gradlew
+      - name: Grant executive permission
+        run: chmod +x gradlew
 
       - name: Run ktlint
         run: ./gradlew ktlint
