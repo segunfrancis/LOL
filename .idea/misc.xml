@@ -13,7 +13,10 @@
         <entry key="app/src/main/res/layout/fragment_dark.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_miscellaneous.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_programming.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.24375" />
         <entry key="app/src/main/res/layout/layout_generic_item.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/pun_fragment.xml" value="0.21203703703703702" />
         <entry key="app/src/main/res/layout/spooky_fragment.xml" value="0.21203703703703702" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.2578125" />
       </map>

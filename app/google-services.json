@@ -8,20 +8,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:746365836615:android:f1caa532849927ed820062",
+        "mobilesdk_app_id": "1:746365836615:android:80166c7ee3d3270c820062",
         "android_client_info": {
-          "package_name": "com.project.segunfrancis.lol"
+          "package_name": "com.segunfrancis.lol"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "746365836615-mk24up4129uh6hqbqi2ml74650umjvv5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.project.segunfrancis.lol",
-            "certificate_hash": "3a717cc81d8b128c2ae6ca7d5578f223aa77b374"
-          }
-        },
         {
           "client_id": "746365836615-lcmverqbjj1t9t57k7t3lhhvg15mm6h4.apps.googleusercontent.com",
           "client_type": 3

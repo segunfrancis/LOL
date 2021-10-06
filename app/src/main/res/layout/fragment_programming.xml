@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".ui.programming.ProgrammingFragment">
+    tools:context="com.segunfrancis.lol.ui.programming.ProgrammingFragment">
 
     <include
         android:id="@+id/generic_include"
