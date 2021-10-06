@@ -59,7 +59,7 @@ class ChristmasFragment : Fragment(R.layout.christmas_fragment) {
     private fun handleError(error: Throwable) = with(binding) {
         genericInclude.shuffleButton.showMessage(
             error.localizedMessage,
-            R.string.text_retry,
+            R.string.retry,
             indefiniteDuration = true
         ) {
             viewModel.getChristmasJoke(JokeCategory.CHRISTMAS.value)

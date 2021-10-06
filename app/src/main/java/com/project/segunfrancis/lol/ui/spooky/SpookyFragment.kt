@@ -59,7 +59,7 @@ class SpookyFragment : Fragment(R.layout.spooky_fragment) {
     private fun handleError(error: Throwable) = with(binding) {
         genericInclude.shuffleButton.showMessage(
             error.localizedMessage,
-            R.string.text_retry,
+            R.string.retry,
             indefiniteDuration = true
         ) {
             viewModel.getSpookyJoke(JokeCategory.SPOOKY.value)

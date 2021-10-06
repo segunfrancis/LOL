@@ -1,5 +1,8 @@
-package com.project.segunfrancis.lol.api.model
+package com.project.segunfrancis.lol.data.model
 
+import androidx.annotation.Keep
+
+@Keep
 data class JokeResponse(
     val category: String,
     val delivery: String,

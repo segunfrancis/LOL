@@ -9,6 +9,8 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.RequestConfiguration
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.project.segunfrancis.lol.R
 import com.project.segunfrancis.lol.databinding.ActivityMainBinding
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        setupTestDevice()
         setupAd()
 
         setSupportActionBar(binding.mainInclude.toolbar)
@@ -47,9 +50,6 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.navView.setupWithNavController(navController)
-
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-        }
     }
 
     private fun setupAd() = with(binding) {
@@ -57,14 +57,21 @@ class MainActivity : AppCompatActivity() {
         mainInclude.adView.loadAd(adRequest)
     }
 
+    private fun setupTestDevice() {
+        // Enable test ads
+        val request = RequestConfiguration.Builder()
+            .setTestDeviceIds(listOf("8352585357BD24FD03F59A5EDAB92679")).build()
+        MobileAds.setRequestConfiguration(request)
+    }
+
     private fun displayExitDialog() {
         val dialog = MaterialAlertDialogBuilder(this@MainActivity).apply {
-            setMessage("Are you sure you want to exit?")
-            setPositiveButton("YES") { dialogInterface, _ ->
+            setMessage(resources.getString(R.string.are_you_sure_you_want_to_exit))
+            setPositiveButton(resources.getString(R.string.yes)) { dialogInterface, _ ->
                 dialogInterface.dismiss()
                 super.onBackPressed()
             }
-            setNegativeButton("NO") { dialogInterface, _ ->
+            setNegativeButton(resources.getString(R.string.no)) { dialogInterface, _ ->
                 dialogInterface.dismiss()
             }
         }

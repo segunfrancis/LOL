@@ -1,6 +1,6 @@
 package com.project.segunfrancis.lol.ui.presentation_util
 
-import com.project.segunfrancis.lol.api.model.JokeResponse
+import com.project.segunfrancis.lol.data.model.JokeResponse
 import com.project.segunfrancis.lol.ui.model.Joke
 import com.project.segunfrancis.lol.utils.AppConstants.SINGLE_JOKE_TYPE
 import com.project.segunfrancis.lol.utils.AppConstants.TWO_JOKE_TYPE

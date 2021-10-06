@@ -1,15 +1,15 @@
-apply plugin: 'com.android.application'
+apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
-apply plugin: 'kotlin-android'
-//apply plugin: 'io.fabric'
+apply plugin: "kotlin-android"
+apply plugin: "com.google.firebase.crashlytics"
 apply plugin: 'com.google.gms.google-services'
 apply from: "../ktlint.gradle"
 
-def getAdUnitId() {
+/*def getAdUnitId() {
     def unitIdProperties = new Properties()
     unitIdProperties.load(project.rootProject.file("secret.properties").newDataInputStream())
     return unitIdProperties.getProperty("adUnitId", "")
-}
+}*/
 
 android {
     compileSdkVersion 31
@@ -17,10 +17,10 @@ android {
         applicationId "com.project.segunfrancis.lol"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 7
-        versionName "2.1.1"
+        versionCode 8
+        versionName "2.2.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "AD_UNIT_ID", getAdUnitId())
+        // buildConfigField("String", "AD_UNIT_ID", getAdUnitId())
     }
     buildTypes {
         release {
@@ -53,6 +53,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-common-java8:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
 
     // Retrofit dependencies
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -60,8 +62,9 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
 
     // Firebase
-    //implementation 'com.crashlytics.sdk.android:crashlytics:17.2.2'
-    implementation 'com.google.firebase:firebase-analytics:19.0.1'
+    implementation platform('com.google.firebase:firebase-bom:28.4.1')
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.android.gms:play-services-ads:20.4.0'
 
     // Koin
@@ -72,8 +75,6 @@ dependencies {
 
     // Timber
     implementation 'com.jakewharton.timber:timber:5.0.1'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
 
     // Test
     testImplementation 'junit:junit:4.13.2'
