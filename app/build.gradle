@@ -14,7 +14,7 @@ apply from: "../ktlint.gradle"
 android {
     compileSdkVersion 31
     defaultConfig {
-        applicationId "com.project.segunfrancis.lol"
+        applicationId "com.segunfrancis.lol"
         minSdkVersion 21
         targetSdkVersion 31
         versionCode 8

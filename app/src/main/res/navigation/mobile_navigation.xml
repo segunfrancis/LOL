@@ -7,55 +7,55 @@
 
     <fragment
         android:id="@+id/nav_any"
-        android:name="com.project.segunfrancis.lol.ui.any.AnyFragment"
+        android:name="com.segunfrancis.lol.ui.any.AnyFragment"
         android:label="@string/any_jokes"
         tools:layout="@layout/fragment_any" />
 
     <fragment
         android:id="@+id/nav_programming"
-        android:name="com.project.segunfrancis.lol.ui.programming.ProgrammingFragment"
+        android:name="com.segunfrancis.lol.ui.programming.ProgrammingFragment"
         android:label="@string/programming_jokes"
         tools:layout="@layout/fragment_programming" />
 
     <fragment
         android:id="@+id/nav_dark"
-        android:name="com.project.segunfrancis.lol.ui.dark.DarkFragment"
+        android:name="com.segunfrancis.lol.ui.dark.DarkFragment"
         android:label="@string/dark_jokes"
         tools:layout="@layout/fragment_dark" />
 
     <fragment
         android:id="@+id/nav_miscellaneous"
-        android:name="com.project.segunfrancis.lol.ui.miscellaneous.MiscellaneousFragment"
+        android:name="com.segunfrancis.lol.ui.miscellaneous.MiscellaneousFragment"
         android:label="@string/miscellaneous_jokes"
         tools:layout="@layout/fragment_miscellaneous" />
 
     <fragment
         android:id="@+id/nav_pun"
-        android:name="com.project.segunfrancis.lol.ui.pun.PunFragment"
+        android:name="com.segunfrancis.lol.ui.pun.PunFragment"
         android:label="@string/pun_jokes"
         tools:layout="@layout/pun_fragment" />
 
     <fragment
         android:id="@+id/nav_christmas"
-        android:name="com.project.segunfrancis.lol.ui.christmas.ChristmasFragment"
+        android:name="com.segunfrancis.lol.ui.christmas.ChristmasFragment"
         android:label="@string/christmas_jokes"
         tools:layout="@layout/christmas_fragment" />
 
     <fragment
         android:id="@+id/nav_spooky"
-        android:name="com.project.segunfrancis.lol.ui.spooky.SpookyFragment"
+        android:name="com.segunfrancis.lol.ui.spooky.SpookyFragment"
         android:label="@string/spooky_jokes"
         tools:layout="@layout/spooky_fragment" />
 
     <fragment
         android:id="@+id/nav_about"
-        android:name="com.project.segunfrancis.lol.ui.about.AboutFragment"
+        android:name="com.segunfrancis.lol.ui.about.AboutFragment"
         android:label="@string/about"
         tools:layout="@layout/fragment_about" />
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.project.segunfrancis.lol.ui.settings.SettingsFragment"
+        android:name="com.segunfrancis.lol.ui.settings.SettingsFragment"
         android:label="@string/settings"
         tools:layout="@layout/fragment_about" />
 </navigation>
