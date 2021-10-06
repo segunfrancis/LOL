@@ -2,7 +2,7 @@ package com.project.segunfrancis.lol.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.project.segunfrancis.lol.api.LolService
+import com.project.segunfrancis.lol.data.LolService
 import com.project.segunfrancis.lol.utils.AppConstants.BASE_URL
 import com.project.segunfrancis.lol.utils.AppConstants.NETWORK_TIMEOUT
 import java.util.concurrent.TimeUnit

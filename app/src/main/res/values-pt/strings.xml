@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Loco xml export: Android string resources
+ Project: lol-project
+ Release: Working copy
+ Locale: pt, Portuguese
+ Exported by: Segun Francis
+ Exported at: Wed, 06 Oct 2021 15:44:21 +0100
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="any_jokes">Alguma piada</string>
+    <string name="programming_jokes">Piadas de programação</string>
+    <string name="dark_jokes">Piadas obscuras</string>
+    <string name="miscellaneous_jokes">Piadas diversas</string>
+    <string name="about">Cerca de</string>
+    <string name="settings">Definições</string>
+    <string name="shuffle">Shuffle</string>
+    <string name="retry">TENTAR NOVAMENTE</string>
+    <string name="christmas_jokes">Piadas de natal</string>
+    <string name="pun_jokes">Piadas de trocadilho</string>
+    <string name="communicate">Comunicar</string>
+    <string name="spooky_jokes">Piadas assustadoras</string>
+    <string name="app_name">LOL</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">LOL</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="ad_unit_id">ca-app-pub-3927632340219551/3674063347</string>
+    <string name="ad_value">ca-app-pub-3927632340219551~8409700494</string>
+    <string name="are_you_sure_you_want_to_exit">Você tem certeza que quer sair?</string>
+    <string name="yes">SIM</string>
+    <string name="no">NÃO</string>
+</resources>

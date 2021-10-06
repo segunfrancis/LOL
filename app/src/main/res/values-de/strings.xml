@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Loco xml export: Android string resources
+ Project: lol-project
+ Release: Working copy
+ Locale: de, German
+ Exported by: Segun Francis
+ Exported at: Wed, 06 Oct 2021 15:44:21 +0100
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="any_jokes">Irgendwelche Witze</string>
+    <string name="programming_jokes">Witze programmieren</string>
+    <string name="dark_jokes">Dunkle Witze</string>
+    <string name="miscellaneous_jokes">Verschiedene Witze</string>
+    <string name="about">Über</string>
+    <string name="settings">Einstellungen</string>
+    <string name="shuffle">Mischen</string>
+    <string name="retry">WIEDERHOLEN</string>
+    <string name="christmas_jokes">Weihnachtswitze</string>
+    <string name="pun_jokes">Wortspiel Witze</string>
+    <string name="communicate">Kommunizieren</string>
+    <string name="spooky_jokes">Gruselige Witze</string>
+    <string name="app_name">LOL</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">LOL</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="ad_unit_id">ca-app-pub-3927632340219551/3674063347</string>
+    <string name="ad_value">ca-app-pub-3927632340219551~8409700494</string>
+    <string name="are_you_sure_you_want_to_exit">Sie sind sicher, dass Sie beenden wollen?</string>
+    <string name="yes">JAWOHL</string>
+    <string name="no">NEIN</string>
+</resources>

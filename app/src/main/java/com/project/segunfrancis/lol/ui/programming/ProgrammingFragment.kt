@@ -59,7 +59,7 @@ class ProgrammingFragment : Fragment(R.layout.fragment_programming) {
     private fun handleError(error: Throwable) = with(binding) {
         genericInclude.shuffleButton.showMessage(
             error.localizedMessage,
-            R.string.text_retry,
+            R.string.retry,
             indefiniteDuration = true
         ) {
             viewModel.getAnyJoke(JokeCategory.PROGRAMMING.value)

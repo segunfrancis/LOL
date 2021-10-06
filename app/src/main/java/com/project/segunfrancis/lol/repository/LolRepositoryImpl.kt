@@ -1,7 +1,7 @@
 package com.project.segunfrancis.lol.repository
 
-import com.project.segunfrancis.lol.api.LolService
-import com.project.segunfrancis.lol.api.model.JokeResponse
+import com.project.segunfrancis.lol.data.LolService
+import com.project.segunfrancis.lol.data.model.JokeResponse
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 

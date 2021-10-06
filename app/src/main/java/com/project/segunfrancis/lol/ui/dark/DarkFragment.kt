@@ -59,7 +59,7 @@ class DarkFragment : Fragment(R.layout.fragment_dark) {
     private fun handleError(error: Throwable) = with(binding) {
         genericInclude.shuffleButton.showMessage(
             error.localizedMessage,
-            R.string.text_retry,
+            R.string.retry,
             indefiniteDuration = true
         ) {
             viewModel.getDarkJoke(JokeCategory.DARK.value)
