@@ -1,9 +1,9 @@
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "kotlin-android"
-apply plugin: "com.google.firebase.crashlytics"
 apply plugin: 'com.google.gms.google-services'
 apply from: "../ktlint.gradle"
+apply plugin: "com.google.firebase.crashlytics"
 
 /*def getAdUnitId() {
     def unitIdProperties = new Properties()
@@ -17,8 +17,8 @@ android {
         applicationId "com.segunfrancis.lol"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 8
-        versionName "2.2.0"
+        versionCode 9
+        versionName "2.2.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         // buildConfigField("String", "AD_UNIT_ID", getAdUnitId())
     }
@@ -66,6 +66,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.android.gms:play-services-ads:20.4.0'
+    implementation 'com.google.android.play:core-ktx:1.8.1'
 
     // Koin
     implementation "io.insert-koin:koin-android:3.1.2"

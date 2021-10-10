@@ -2,6 +2,7 @@ package com.segunfrancis.lol
 
 import android.app.Application
 import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.RequestConfiguration
 import com.segunfrancis.lol.di.dispatcherModule
 import com.segunfrancis.lol.di.remoteModule
 import com.segunfrancis.lol.di.repoModule
@@ -27,5 +28,13 @@ class LolApplication : Application() {
         }
         // Initialize Google adMob
         MobileAds.initialize(this) {}
+        setupTestDevice()
+    }
+
+    private fun setupTestDevice() {
+        // Enable test ads
+        val request = RequestConfiguration.Builder()
+            .setTestDeviceIds(listOf("8352585357BD24FD03F59A5EDAB92679")).build()
+        MobileAds.setRequestConfiguration(request)
     }
 }
